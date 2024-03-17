@@ -1,11 +1,4 @@
-![Build Status](https://github.com/safe-global/safe-transaction-service/workflows/Python%20CI/badge.svg?branch=main)
-[![Coverage Status](https://coveralls.io/repos/github/safe-global/safe-transaction-service/badge.svg?branch=main)](https://coveralls.io/github/safe-global/safe-transaction-service?branch=main)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)
-![Django 5](https://img.shields.io/badge/Django-5-blue.svg)
-[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/safeglobal/safe-transaction-service?label=Docker&sort=semver)](https://hub.docker.com/r/safeglobal/safe-transaction-service)
-
-# Safe Transaction Service
+# Klaytn Safe Transaction Service
 Keeps track of transactions sent via Safe contracts. It uses events and
 [tracing](https://openethereum.github.io/JSONRPC-trace-module) to index the txs.
 
@@ -15,13 +8,10 @@ as in previous versions of the *Transaction Service*.
 Transactions can also be sent to the service to allow offchain collecting of signatures or informing the owners about
 a transaction that is pending to be sent to the blockchain.
 
-[Swagger (Mainnet version)](https://safe-transaction-mainnet.safe.global/)
-[More networks](https://docs.safe.global/api-supported-networks)
-
 ## Index of contents
 
 - [Docs](https://docs.safe.global/safe-core-api/service-architecture)
-- [Deploying the service](https://github.com/safe-global/safe-infrastructure)
+- [Deploying the service](https://github.com/klaytn/klaytn-safe-infrastructure)
 
 ## Setup for development
 Use a virtualenv if possible:
@@ -148,7 +138,7 @@ Service can run into some issues when running in production:
 
 ### Indexing issues
 You can tell there are indexing issues if:
-- Executed transactions are missing from the API (`all-transactions`, `multisig-transactions`, `module-transactions`... endpoints). If you use the [Safe{Wallet} Web client](https://github.com/safe-global/safe-wallet-web) you should check what is the current state of the Safe Client Gateway cache as it might have outdated data.
+- Executed transactions are missing from the API (`all-transactions`, `multisig-transactions`, `module-transactions`... endpoints). If you use the [Safe{Wallet} Web client](https://github.com/klaytn/klaytn-safe-wallet-web) you should check what is the current state of the Safe Client Gateway cache as it might have outdated data.
 - Asset transfers (ERC20/721) are missing from `all-transactions` or `transfers` endpoints.
 - You see error logs such as "Cannot remove owner" or similar inconsistent errors when `worker-indexer` is processing decoded data.
 
@@ -187,7 +177,7 @@ Aside from using standard HTTP requests:
 - [Safe CLI](https://github.com/safe-global/safe-cli): It has a `tx-service` mode to gather offchain signatures.
 
 ### What chains do you officially support?
-https://docs.safe.global/api-supported-networks
+Klaytn Cypress and Baobab
 
 ### What means banned field in SafeContract model?
 The `banned` field in the `SafeContract` model is used to prevent indexing of certain Safes that have an unsupported `MasterCopy` or unverified proxies that have issues during indexing. This field does not remove the banned Safe and indexing can be resumed once the issue has been resolved.
@@ -199,4 +189,4 @@ The `banned` field in the `SafeContract` model is used to prevent indexing of ce
 If you face issues installing the `grpc` dependency locally (required by this project) on a M1 chip, set `GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1` and `GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1` and then try to install the dependency again.
 
 ## Contributors
-[See contributors](https://github.com/safe-global/safe-transaction-service/graphs/contributors)
+[See contributors](https://github.com/klaytn/klaytn-safe-transaction-service/graphs/contributors)

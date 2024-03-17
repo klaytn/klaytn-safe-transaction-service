@@ -3,6 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: bug
+assignees: ''
 
 ---
 
@@ -11,10 +12,9 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Do POST on '...'
-  - Provide `json` you are submitting to the service (if it applies)
-2. Then GET on '....'
-3. Links to issues in other repos (if possible)
+- Call url `...`
+- Provide `json` you are submitting to the service (if it applies)
+- Links to issues in other repos (if possible)
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
